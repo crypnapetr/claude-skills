@@ -28,7 +28,7 @@ Point your Claude session at this skill and give it a job description. It will c
 
 ```bash
 node scripts/build.js <slug>/content.js <slug>
-soffice --headless --convert-to-pdf --outdir <slug> <slug>/*.docx
+soffice --headless --convert-to pdf --outdir <slug> <slug>/*.docx
 ```
 
 Output filenames are derived from the `name` field in your content file, e.g.
