@@ -8,14 +8,23 @@ This skill runs that filter on one video or article at a time.
 
 ## How it works
 
-1. **Skip list.** Channels that have failed three times never get looked at again.
-2. **Triage.** Three lines on what the source is actually about, ending in KEEP or SKIP.
-3. **Delta.** What does this say that my kept sources don't? An empty list means reject.
-4. **Watch.** Only now do I spend viewing time, at 2x, on the net-new parts.
-5. **Extract.** Thesis, techniques with exact steps and prompts, things to avoid, and caveats.
-6. **File.** A dated digest goes into a tracker that feeds my own AI cheat sheet.
+It has two parts.
 
-The cheap checks come first. A skip list and two short prompts reject most sources before I watch a minute.
+**It judges the content.**
+
+1. **Triage.** Three lines on what the source is actually about, ending in KEEP or SKIP.
+2. **Delta.** What does this say that my kept sources don't? An empty list means reject.
+3. **Watch.** Only now do I spend viewing time, at 2x, on the net-new parts.
+4. **Extract.** Techniques with exact steps and prompts, things to avoid, and caveats. I can keep a whole source or only the parts worth keeping.
+5. **File.** A dated digest goes into a tracker that feeds my own AI cheat sheet.
+
+**It learns the creators.**
+
+Every keep or skip is scored against the channel it came from. Three skips in a row and a channel stops being looked at. Three or more keeps with at most one skip and it becomes trusted, which skips triage. Over time the scorecard becomes a short list of who is consistently worth following.
+
+The cheap checks come first. The scorecard and two short prompts reject most sources before I watch a minute.
+
+**Batch mode.** Send several links at once and get one ranked table back, with overlap between them called out and a suggested watch order.
 
 ## Install
 
@@ -26,7 +35,7 @@ Copy the `ai-source-triage` folder (it only needs `SKILL.md`) into your Claude s
 
 Then drop a link and say "triage this."
 
-On first run it asks where your tracker lives (any doc or markdown file) and what topics you want skipped automatically.
+On first run it asks where your tracker lives (any doc or markdown file) and what topics you want skipped automatically. It keeps the channel scorecard in that same tracker.
 
 ## Reading YouTube
 
@@ -34,7 +43,7 @@ Many cloud environments can't fetch YouTube transcripts. The skill tries a brows
 
 ## Status
 
-Early. The process is one I've used by hand for a while. The browser route for transcripts is new and lightly tested, so expect rough edges.
+Early. The browser route for transcripts has worked on a handful of videos, and the channel scorecard and batch mode are new, so expect rough edges.
 
 ## License
 
